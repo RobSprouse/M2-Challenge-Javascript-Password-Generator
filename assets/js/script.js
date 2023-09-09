@@ -1,17 +1,33 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
+let generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  let password = generatePassword();
+  let passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+
+
+function passwordPrompt() {
+  let passwordLength = prompt("Choose a password length between 8 and 128 characters.");
+    alert(passwordLength);
+  let lowercase = confirm("Would you like to include lowercase letters?");
+    alert(lowercase);
+  let uppercase = confirm("Would you like to include uppercase letters?");
+    alert(uppercase);
+  let numeric = confirm("Would you like to include numeric characters?");
+    alert(numeric);
+  let special = confirm("Would you like to include special characters?");
+    alert(special);
+}
+
+
+
+
 
 // TODO:WHEN I click the button to generate a password THEN I am presented with a series of prompts for password criteria
 
@@ -26,3 +42,6 @@ generateBtn.addEventListener("click", writePassword);
 // TODO: WHEN all prompts are answered THEN a password is generated that matches the selected criteria
 
 // TODO: WHEN the password is generatedTHEN the password is either displayed in an alert or written to the page
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
