@@ -1,7 +1,7 @@
-// Assignment Code
+// COMMENT: Assigns the generateBtn element to the button with id "generate" in the html document
 let generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
+// COMMENT: Declares the function writePassword()
 function writePassword() {
   let password = generatePassword();
   let passwordText = document.querySelector("#password");
@@ -10,23 +10,37 @@ function writePassword() {
 
 }
 
+// COMMENT: Declares the function generatePassword()
+function generatePassword() {
 
+  // COMMENT:Defines character sets.
+  let lowercase = "abcdefghijklmnopqrstuvwxyz";
+  let uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let numeric = "0123456789";
+  let special = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+  
 
-function passwordPrompt() {
+  // COMMENT:Prompts
   let passwordLength = prompt("Choose a password length between 8 and 128 characters.");
-    alert(passwordLength);
+    if (passwordLength < 8 || passwordLength > 128) {
+    alert("Please choose a password length between 8 and 128 characters.");
+    generatePassword();
+  }
+      else {
   let lowercase = confirm("Would you like to include lowercase letters?");
-    alert(lowercase);
+        alert(lowercase);
   let uppercase = confirm("Would you like to include uppercase letters?");
-    alert(uppercase);
+        alert(uppercase);
   let numeric = confirm("Would you like to include numeric characters?");
-    alert(numeric);
+        alert(numeric);
   let special = confirm("Would you like to include special characters?");
-    alert(special);
-}
-
-
-
+        alert(special);
+  if (!lowercase + !uppercase + !numeric + !special) {
+      alert("You have to confirm at least one character type!");
+      generatePassword()
+    }
+  }
+} 
 
 
 // TODO:WHEN I click the button to generate a password THEN I am presented with a series of prompts for password criteria
