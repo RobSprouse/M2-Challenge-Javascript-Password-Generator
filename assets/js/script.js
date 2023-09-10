@@ -17,42 +17,38 @@ function generatePassword() {
   let numericSet = "0123456789";
   let specialSet = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
-  // COMMENT:Prompts with "if" conditional statements to verify criteria, if criteria isn't met, the function will start over 
+  // COMMENT:Prompts for criteria. If the minimum criteria isn't met, the prompts will remain in a "while" loop until the criteria is met.
   let passwordLength = prompt("Choose a password length between 8 and 128 characters.");
-
-    if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
-      alert("You have to choose a password length between 8 and 128 characters!");
-      generatePassword();
-    } 
-      else {
-        let lowercase = confirm("Would you like for your password to include lowercase letters?");
-          alert(lowercase);
-        let uppercase = confirm("Would you like for your password to include uppercase letters?");
-          alert(uppercase);
-        let numeric = confirm("Would you like for your password to include numeric characters?");
-          alert(numeric);
-        let special = confirm("Would you like for your password to include special characters?");
-          alert(special);
-            if (!lowercase && !uppercase && !numeric && !special) {
-              alert("You have to confirm at least one character type!");
-              generatePassword();
-            } 
-              else {
-                let characterSet = "";
-                  if (lowercase) characterSet += lowercaseSet;
-                  if (uppercase) characterSet += uppercaseSet;
-                  if (numeric) characterSet += numericSet; 
-                  if (special) characterSet += specialSet;
-                  let password = "";
-                    for (let i = 0; i < passwordLength; i++) {
-                      password += characterSet[Math.floor(Math.random() * characterSet.length)];
-                    }
-                return password;
-              }
-        } 
-}
-
-
+  while (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
+    passwordLength = prompt("Choose a password length between 8 and 128 characters.");
+  }
+  let lowercase = confirm("Would you like for your password to include lowercase letters?");
+    alert(lowercase);
+  let uppercase = confirm("Would you like for your password to include uppercase letters?");
+    alert(uppercase);
+  let numeric = confirm("Would you like for your password to include numeric characters?");
+    alert(numeric);
+  let special = confirm("Would you like for your password to include special characters?");
+    alert(special);
+  while (!lowercase && !uppercase && !numeric && !special) {
+    alert("You have to confirm at least one character type!");
+    lowercase = confirm("Would you like for your password to include lowercase letters?");
+    uppercase = confirm("Would you like for your password to include uppercase letters?");
+    numeric = confirm("Would you like for your password to include numeric characters?");
+    special = confirm("Would you like for your password to include special characters?");
+  } 
+   let characterSet = "";
+     if (lowercase) characterSet += lowercaseSet;
+     if (uppercase) characterSet += uppercaseSet;
+     if (numeric) characterSet += numericSet; 
+     if (special) characterSet += specialSet;
+     let password = "";
+       for (let i = 0; i < passwordLength; i++) {
+         password += characterSet[Math.floor(Math.random() * characterSet.length)];
+       }
+   return password;
+ }
+ 
 // COMMENT:Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
