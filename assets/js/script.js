@@ -17,10 +17,10 @@ function generatePassword() {
   let numericSet = "0123456789";
   let specialSet = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
-  // COMMENT:Prompts with "if" conditional statements to verify criteria 
+  // COMMENT:Prompts with "if" conditional statements to verify criteria, if criteria isn't met, the function will start over 
   let passwordLength = prompt("Choose a password length between 8 and 128 characters.");
 
-    if (passwordLength < 8 || passwordLength > 128) {
+    if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
       alert("You have to choose a password length between 8 and 128 characters!");
       generatePassword();
     } 
