@@ -1,16 +1,55 @@
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
+// COMMENT: Assigns the generateBtn element to the button with id "generate" in the html document
+let generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
+// COMMENT: Declares the function writePassword()
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
+  let password = generatePassword();
+  let passwordText = document.querySelector("#password");
   passwordText.value = password;
-
 }
 
-// Add event listener to generate button
+// COMMENT: Declares the function generatePassword()
+function generatePassword() {
+
+  // COMMENT:Defines character sets.
+  let lowercaseSet = "abcdefghijklmnopqrstuvwxyz";
+  let uppercaseSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let numericSet = "0123456789";
+  let specialSet = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+
+  // COMMENT:Prompts for criteria. If the minimum criteria isn't met, the prompts will remain in a "while" loop until the criteria is met.
+  let passwordLength = prompt("Choose a password length between 8 and 128 characters.");
+  while (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
+    passwordLength = prompt("Choose a password length between 8 and 128 characters.");
+  }
+  let lowercase = confirm("Would you like for your password to include lowercase letters?");
+    alert(lowercase);
+  let uppercase = confirm("Would you like for your password to include uppercase letters?");
+    alert(uppercase);
+  let numeric = confirm("Would you like for your password to include numeric characters?");
+    alert(numeric);
+  let special = confirm("Would you like for your password to include special characters?");
+    alert(special);
+  while (!lowercase && !uppercase && !numeric && !special) {
+    alert("You have to confirm at least one character type!");
+    lowercase = confirm("Would you like for your password to include lowercase letters?");
+    uppercase = confirm("Would you like for your password to include uppercase letters?");
+    numeric = confirm("Would you like for your password to include numeric characters?");
+    special = confirm("Would you like for your password to include special characters?");
+  } 
+   let characterSet = "";
+     if (lowercase) characterSet += lowercaseSet;
+     if (uppercase) characterSet += uppercaseSet;
+     if (numeric) characterSet += numericSet; 
+     if (special) characterSet += specialSet;
+     let password = "";
+       for (let i = 0; i < passwordLength; i++) {
+         password += characterSet[Math.floor(Math.random() * characterSet.length)];
+       }
+   return password;
+ }
+ 
+// COMMENT:Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
 // TODO:WHEN I click the button to generate a password THEN I am presented with a series of prompts for password criteria
