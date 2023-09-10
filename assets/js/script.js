@@ -20,27 +20,37 @@ function generatePassword() {
   let specialSet = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
   
 
-  // COMMENT:Prompts
+  // COMMENT:Prompts with "if" conditional statements to verify criteria 
   let passwordLength = prompt("Choose a password length between 8 and 128 characters.");
     if (passwordLength < 8 || passwordLength > 128) {
       alert("You have to choose a password length between 8 and 128 characters!");
       generatePassword();
-    }
-  let lowercase = confirm("Would you like to include lowercase letters?");
-    alert(lowercase);
-  let uppercase = confirm("Would you like to include uppercase letters?");
-    alert(uppercase);
-  let numeric = confirm("Would you like to include numeric characters?");
-    alert(numeric);
-  let special = confirm("Would you like to include special characters?");
-    alert(special);
-          
-  if (!lowercase && !uppercase && !numeric && !special) {
+    } 
+      else {
+        let lowercase = confirm("Would you like for your password to include lowercase letters?");
+          alert(lowercase);
+        let uppercase = confirm("Would you like for your password to include uppercase letters?");
+          alert(uppercase);
+        let numeric = confirm("Would you like for your password to include numeric characters?");
+          alert(numeric);
+        let special = confirm("Would you like for your password to include special characters?");
+          alert(special);
+        if (!lowercase && !uppercase && !numeric && !special) {
             alert("You have to confirm at least one character type!");
             generatePassword();
-  } 
-    else {console.log("passed")
-    }
+        } 
+          else {
+            let characterSet = "";
+              if (lowercase) characterSet += lowercaseSet;
+              if (uppercase) characterSet += uppercaseSet;
+              if (numeric) characterSet += numericSet; 
+              if (special) characterSet += specialSet;
+            let password = "";
+              for (let i = 0; i < passwordLength; i++) {
+                password += characterSet[Math.floor(Math.random() * characterSet.length)];
+              }
+              return password;
+      }   }
 }
 
 
