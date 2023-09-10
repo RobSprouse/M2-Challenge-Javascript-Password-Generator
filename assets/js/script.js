@@ -5,9 +5,7 @@ let generateBtn = document.querySelector("#generate");
 function writePassword() {
   let password = generatePassword();
   let passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-
 }
 
 // COMMENT: Declares the function generatePassword()
@@ -18,10 +16,10 @@ function generatePassword() {
   let uppercaseSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   let numericSet = "0123456789";
   let specialSet = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
-  
 
   // COMMENT:Prompts with "if" conditional statements to verify criteria 
   let passwordLength = prompt("Choose a password length between 8 and 128 characters.");
+
     if (passwordLength < 8 || passwordLength > 128) {
       alert("You have to choose a password length between 8 and 128 characters!");
       generatePassword();
@@ -35,24 +33,28 @@ function generatePassword() {
           alert(numeric);
         let special = confirm("Would you like for your password to include special characters?");
           alert(special);
-        if (!lowercase && !uppercase && !numeric && !special) {
-            alert("You have to confirm at least one character type!");
-            generatePassword();
-        } 
-          else {
-            let characterSet = "";
-              if (lowercase) characterSet += lowercaseSet;
-              if (uppercase) characterSet += uppercaseSet;
-              if (numeric) characterSet += numericSet; 
-              if (special) characterSet += specialSet;
-            let password = "";
-              for (let i = 0; i < passwordLength; i++) {
-                password += characterSet[Math.floor(Math.random() * characterSet.length)];
+            if (!lowercase && !uppercase && !numeric && !special) {
+              alert("You have to confirm at least one character type!");
+              generatePassword();
+            } 
+              else {
+                let characterSet = "";
+                  if (lowercase) characterSet += lowercaseSet;
+                  if (uppercase) characterSet += uppercaseSet;
+                  if (numeric) characterSet += numericSet; 
+                  if (special) characterSet += specialSet;
+                  let password = "";
+                    for (let i = 0; i < passwordLength; i++) {
+                      password += characterSet[Math.floor(Math.random() * characterSet.length)];
+                    }
+                return password;
               }
-              return password;
-      }   }
+        } 
 }
 
+
+// COMMENT:Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
 // TODO:WHEN I click the button to generate a password THEN I am presented with a series of prompts for password criteria
 
@@ -67,6 +69,3 @@ function generatePassword() {
 // TODO: WHEN all prompts are answered THEN a password is generated that matches the selected criteria
 
 // TODO: WHEN the password is generatedTHEN the password is either displayed in an alert or written to the page
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
