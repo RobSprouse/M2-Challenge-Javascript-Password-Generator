@@ -39,7 +39,7 @@ In addition to meeting the above criteria, I wrote the code to prevent "undefine
 ## Usage
 
 This application was deployed to the following URL.
-
+<br></br>
 >https://robsprouse.github.io/M3-Challenge-Javascript-Password-Generator/
 
 The following image shows the web application's appearance. 
