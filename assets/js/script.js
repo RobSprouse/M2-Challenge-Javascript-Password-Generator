@@ -49,6 +49,7 @@ function generatePassword() {
         } else {
             uppercaseMessage ="You have chosen to include uppercase letters."
         }
+        alert(uppercaseMessage);
         numeric = confirm("Would you like for your password to include numeric characters?");
         let numericMessage;
         if (!numeric) {
@@ -56,6 +57,7 @@ function generatePassword() {
         } else {
             numericMessage = "You have chosen to include numeric characters."
         }
+        alert (numericMessage);
         special = confirm("Would you like for your password to include special characters?");
         let specialMessage;
         if (!special) {
@@ -63,6 +65,7 @@ function generatePassword() {
         } else {
             specialMessage = "You have chosen to include special characters."
         }
+        alert (specialMessage);
     }
     // COMMENT: Defines a random characterSet based on the criteria chsoen by the user and generates a random password, then stores it into a variable called password.
     let characterSet = "";
