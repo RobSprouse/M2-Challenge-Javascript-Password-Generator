@@ -26,13 +26,6 @@ function generatePassword() {
         );
     }
     let lowercase = confirm("Would you like for your password to include lowercase letters?");
-    let lowercaseMessage
-    if (!lowercase) {
-        lowercaseMessage = "You have chosen not to include lowercase letters."
-    } else {
-        lowercaseMessage = "You have chosen to include lowercase letters."
-    }
-    alert(lowercaseMessage);
     let uppercase = confirm("Would you like for your password to include uppercase letters?");
     alert(uppercase);
     let numeric = confirm("Would you like for your password to include numeric characters?");
@@ -42,9 +35,34 @@ function generatePassword() {
     while (!lowercase && !uppercase && !numeric && !special) {
         alert("At least one character type must be selected. Please select at least one character type.");
         lowercase = confirm("Would you like for your password to include lowercase letters?");
+        let lowercaseMessage
+        if (!lowercase) {
+            lowercaseMessage = "You have chosen not to include lowercase letters."
+        } else {
+            lowercaseMessage = "You have chosen to include lowercase letters."
+        }
+        alert(lowercaseMessage);
         uppercase = confirm("Would you like for your password to include uppercase letters?");
+        let uppercaseMessage
+        if (!uppercase) {
+            uppercaseMessage = "You have chosen not to include uppercase letters."
+        } else {
+            uppercaseMessage ="You have chosen to include uppercase letters."
+        }
         numeric = confirm("Would you like for your password to include numeric characters?");
+        let numericMessage;
+        if (!numeric) {
+            numericMessage = "You have chosen not to include numeric characters."
+        } else {
+            numericMessage = "You have chosen to include numeric characters."
+        }
         special = confirm("Would you like for your password to include special characters?");
+        let specialMessage;
+        if (!special) {
+            specialMessage = "You have chosen not to include special characters."
+        } else {
+            specialMessage = "You have chosen to include special characters."
+        }
     }
     // COMMENT: Defines a random characterSet based on the criteria chsoen by the user and generates a random password, then stores it into a variable called password.
     let characterSet = "";
